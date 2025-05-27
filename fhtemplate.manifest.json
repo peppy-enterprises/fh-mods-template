@@ -1,0 +1,10 @@
+{
+    "Name":"Template Mod",
+    "Desc":"Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Authors": "The Fahrenheit contributors",
+    "Version":"1.0.0-alpha",
+    "Link":"https://github.com/peppy-enterprises/fh-mods-template",
+    "DllList":["fhtemplate"],
+    "Dependencies":[],
+    "LoadAfter":[]
+}
