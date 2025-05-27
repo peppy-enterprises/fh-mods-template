@@ -8,7 +8,7 @@ namespace Fahrenheit.Modules.Template;
 public class TemplateModule : FhModule {
     public TemplateModule() { }
 
-    public override bool init(FileStream global_state_file) { }
+    public override bool init(FileStream global_state_file) { return true; }
 
     public override void load_local_state(FileStream? local_state_file, FhLocalStateInfo local_state_info) { }
     public override void save_local_state(FileStream  local_state_file)                                    { }
