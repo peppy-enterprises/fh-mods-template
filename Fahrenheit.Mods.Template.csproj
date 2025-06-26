@@ -22,7 +22,7 @@
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-        <PlatformTarget>x86</PlatformTarget>
+        <RuntimeIdentifier>win-x86</RuntimeIdentifier>
         <EnableDynamicLoading>true</EnableDynamicLoading>
     </PropertyGroup>
 
@@ -41,32 +41,12 @@
         <Product>Template Mod</Product>
     </PropertyGroup>
 
-    <!-- LOCAL DEPLOYMENT TARGET -->
-    <!--
-    This should be included exactly as-is.
-
-    For modules, this must always be equal to $(SolutionDir)\artifacts\localdeploy\modules\$(AssemblyName).
-    -->
-    <PropertyGroup>
-        <CopyToDir>$(SolutionDir)artifacts\localdeploy\mods\$(AssemblyName)</CopyToDir>
-    </PropertyGroup>
-
     <!-- SDK REFERENCES -->
     <!--
     This should be included exactly as-is.
     -->
     <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
     <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
-
-    <!-- MANIFEST & CONFIG REFERENCES -->
-    <!--
-    This should be included exactly as-is.
-    -->
-    <ItemGroup>
-        <Content Include="fhtemplate.manifest.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
 
     <!-- SHARED FILE LINKS -->
     <!--
@@ -76,6 +56,16 @@
     -->
     <ItemGroup>
         <None Include="$(SolutionDir).editorconfig" Link=".editorconfig" />
+    </ItemGroup>
+
+    <!-- MANIFEST & CONFIG REFERENCES -->
+    <!--
+    This should be included exactly as-is.
+    -->
+    <ItemGroup>
+        <Content Include="fhtemplate.manifest.json">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </Content>
     </ItemGroup>
 
     <!-- PROJECT REFERENCES -->
@@ -90,7 +80,8 @@
     <ItemGroup>
         <ProjectReference Include="..\..\base\core\Fahrenheit.Core.csproj">
             <Private>false</Private>
-            <ExcludeAssets>runtime</ExcludeAssets>
+            <!-- Hack due to NuGet's complete inability to properly handle transitive native deps -->
+            <IncludeAssets>compile</IncludeAssets>
         </ProjectReference>
     </ItemGroup>
 
