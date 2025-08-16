@@ -58,16 +58,6 @@
         <None Include="$(SolutionDir).editorconfig" Link=".editorconfig" />
     </ItemGroup>
 
-    <!-- MANIFEST & CONFIG REFERENCES -->
-    <!--
-    This should be included exactly as-is.
-    -->
-    <ItemGroup>
-        <Content Include="fhtemplate.manifest.json">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
-
     <!-- PROJECT REFERENCES -->
     <!--
     This should be included exactly as-is.
@@ -82,6 +72,28 @@
             <Private>false</Private>
             <ExcludeAssets>runtime;native</ExcludeAssets>
         </ProjectReference>
+    </ItemGroup>
+
+    <!-- ASSETS: MANIFEST -->
+    <ItemGroup>
+        <None Include="$(AssemblyName).manifest.json" CopyToOutputDirectory="Always" />
+    </ItemGroup>
+
+    <!-- ASSETS: LOCALIZATION -->
+    <ItemGroup>
+        <None Remove="lang/**" />
+        <None Include="lang/*.json" CopyToOutputDirectory="Always" />
+    </ItemGroup>
+
+    <!-- ASSETS: EXTERNAL FILE LOADER -->
+    <ItemGroup>
+        <None Remove="efl/**" />
+        <None Include="efl/x/**/*;efl/x2/**/*" CopyToOutputDirectory="Always" />
+    </ItemGroup>
+
+    <!-- ASSETS: GENERIC -->
+    <ItemGroup>
+        <None Include="resources/**" CopyToOutputDirectory="Always" />
     </ItemGroup>
 
 </Project>
