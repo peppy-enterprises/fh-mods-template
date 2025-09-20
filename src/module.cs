@@ -1,4 +1,6 @@
-﻿namespace Fahrenheit.Mods.Template;
+﻿// SPDX-License-Identifier: MIT
+
+namespace Fahrenheit.Mods.Template;
 
 [FhLoad(FhGameType.FFX)]
 public class TemplateModule : FhModule {
